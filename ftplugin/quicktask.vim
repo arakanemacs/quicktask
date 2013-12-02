@@ -4,6 +4,9 @@
 " Version:	1.2
 " Date:		10 January 2012
 "
+" Changed: Masahiro Arakane
+" ChangedDate: 2 December 2013
+"
 " See the documentation in doc/quicktask.txt
 "
 " Quicktask is free software: you can redistribute it and/or modify it under
@@ -289,7 +292,8 @@ function! s:MakeSnipName()
 	if len(task_text)
 		let matches = matchlist(task_text, '^\s*- \(.*\)$')
 		if len(matches)
-			let task_string = tolower(substitute(matches[1], '[^a-zA-Z]', '-', 'g'))
+      " allow non-alphabetic words for filename
+			let task_string = tolower(substitute(matches[1], '\s', '-', 'g'))
 			if strlen(task_string) > 30
 				let task_string = matchstr(task_string, '^\(.\{15\}\)')
 			endif
@@ -301,7 +305,8 @@ function! s:MakeSnipName()
 	if !strlen(task_string)
 		echo "The task's name is not long enough or couldn't be found."
 		let orig_text = input("Enter a name for the snip: ")
-		let task_string = tolower(substitute(orig_text, '[^a-zA-Z]', '-', 'g'))
+    " allow non-alphabetic words for filename
+		let task_string = tolower(substitute(orig_text, '\s', '-', 'g'))
 		if strlen(task_string) > 30
 			let task_string = matchstr(task_string, '^\(.\{15\}\)')
 		endif
@@ -312,7 +317,7 @@ function! s:MakeSnipName()
 		let task_string = substitute(task_string, '-$', '', '')
 	endif
 
-	return strftime('%Y%m%d%H%M%S-').task_string
+	return strftime('%Y-%m-%d-').task_string.'.markdown'
 endfunction
 
 " ============================================================================
@@ -569,8 +574,8 @@ function! s:AddSnipToTask()
 
 	" Create a new snip file
 	execute "silent! topleft ".g:quicktask_snip_win_split_direction." ".g:quicktask_snip_win_height."split ".g:quicktask_snip_path.snip_name
-	execute "normal I# vim:ft=".g:quicktask_snip_default_filetype."\<ESC>O\<ESC>O\<ESC>"
-	execute "setf ".g:quicktask_snip_default_filetype
+"	execute 'normal I# vim:ft='.g:quicktask_snip_default_filetype."\<ESC>O\<ESC>O\<ESC>"
+"	execute 'setf '.g:quicktask_snip_default_filetype
 	call s:ConfigureSnipWindow()
 endfunction
 
