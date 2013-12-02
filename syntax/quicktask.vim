@@ -4,6 +4,9 @@
 " Version:	1.2
 " Date:		10 January 2012
 "
+" Changed: Masahiro Arakane
+" ChangedDate: 2 December 2013
+"
 " This syntax file was based upon the work of Eric Talevich in his
 " "todolist" syntax format. Though many patterns have been re-worked, Eric's
 " base file was the inspiration that made Quicktask possible.
@@ -35,23 +38,23 @@ syn case ignore
 
 " Sections, tasks, and notes (the building blocks of any list)
 syn match	quicktaskSection		'^.*:\s*$'
-									\ contains=quicktaskMarker,@Spell
+									\ contains=quicktaskMarker
 
 syn match	quicktaskTask			'^\(\s*\)-.\{-}\n\%(\1[^-*]\{-}\n\)*'
-									\ contains=quicktaskMarker,quicktaskTicket,@Spell,quicktaskConstant,quicktaskDatestamp,quicktaskTimestamp,quicktaskSnip
+									\ contains=quicktaskMarker,quicktaskTicket,quicktaskConstant,quicktaskDatestamp,quicktaskTimestamp,quicktaskSnip
 
 syn match	quicktaskNoteCont		/^\s\+[^-*@ ].*$/ contained nextgroup=quicktaskNoteCont,quicktaskNote skipnl
-									\ contains=quicktaskMarker,quicktaskTicket,@Spell,quicktaskConstant,
+									\ contains=quicktaskMarker,quicktaskTicket,quicktaskConstant,
 									\ quicktaskDone,quicktaskDatestamp,quicktaskTimestamp,quicktaskSnip,
 									\ quicktaskIncomplete
 
 syn match	quicktaskNote			/^\s\+[*]\s.*$/ nextgroup=quicktaskNoteCont skipnl
-									\ contains=quicktaskNoteCont,quicktaskMarker,quicktaskTicket,@Spell,
+									\ contains=quicktaskNoteCont,quicktaskMarker,quicktaskTicket,
 									\ quicktaskConstant, quicktaskDone,quicktaskDatestamp,quicktaskTimestamp,
 									\ quicktaskSnip, quicktaskIncomplete
 
 syn match	quicktaskTimeNote		/^\s\+[@]\s\(Added\|Start\|DONE\).*$/
-									\ contains=quicktaskMarker,quicktaskTicket,@Spell,quicktaskConstant,
+									\ contains=quicktaskMarker,quicktaskTicket,quicktaskConstant,
 									\ quicktaskDone,quicktaskDatestamp,quicktaskTimestamp,quicktaskSnip,
 									\ quicktaskIncomplete
 
@@ -99,7 +102,7 @@ hi def link quicktaskDatestamp		Number
 hi def link quicktaskTimestamp		Number
 hi def link quicktaskConstant		Constant
 hi def link quicktaskIncomplete		Error
-hi def link quicktaskTicket			Special
+"hi def link quicktaskTicket			Special
 
 let b:current_syntax = "quicktask"
 

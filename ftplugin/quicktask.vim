@@ -29,9 +29,9 @@ set cpo&vim
 " Set all buffer-local settings: {{{1
 setlocal comments=b:#,f:-,f:*
 setlocal formatoptions=qnwta
-setlocal spell
-setlocal wrap
-setlocal textwidth=80
+"setlocal spell
+"setlocal wrap
+"setlocal textwidth=80
 
 " Quicktask uses real tabs with a visible indentation of two spaces.
 setlocal expandtab
