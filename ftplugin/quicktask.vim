@@ -28,7 +28,7 @@ set cpo&vim
 
 " Set all buffer-local settings: {{{1
 setlocal comments=b:#,f:-,f:*
-setlocal formatoptions=qnwta
+"setlocal formatoptions=qnwta
 "setlocal spell
 "setlocal wrap
 "setlocal textwidth=80
@@ -68,7 +68,7 @@ if !exists("g:quicktask_snip_win_height")
 endif
 
 if !exists("g:quicktask_snip_default_filetype")
-	let g:quicktask_snip_default_filetype = "text"
+	let g:quicktask_snip_default_filetype = "markdown"
 endif
 
 if !exists("g:quicktask_snip_win_split_direction") ||
