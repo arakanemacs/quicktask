@@ -76,7 +76,7 @@ syn match	quicktaskIncomplete		display '@ Start \[\w\w\w\s\d\d\d\d-\d\d-\d\d\]\s
 " JIRA tickets, e.g. PROJECTNAME-1234
 "syn match	quicktaskTicket			display '\C[A-Z]\+-[0-9]\+'
 " tickets within pipes |TICKET|
-syn match	quicktaskTicket			display ':.\+:'
+syn match	quicktaskTicket			display '{.\+}'
 
 " The remainder of items are case-insensitive.
 syn case ignore
