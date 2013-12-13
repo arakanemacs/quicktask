@@ -294,9 +294,9 @@ function! s:MakeSnipName()
 		if len(matches)
       " allow non-alphabetic words for filename
 			let task_string = tolower(substitute(matches[1], '\s', '-', 'g'))
-			if strlen(task_string) > 30
-				let task_string = matchstr(task_string, '^\(.\{15\}\)')
-			endif
+			"if strlen(task_string) > 30
+			"	let task_string = matchstr(task_string, '^\(.\{15\}\)')
+			"endif
 		endif
 	endif
 
